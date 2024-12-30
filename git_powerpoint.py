@@ -22,7 +22,7 @@ def extract_text_from_shape(shape: Shape) -> str:
     if not shape.has_text_frame:
         return None
     if shape.name == "PlaceHolder 1":
-        return "\n".join([paragraph.text for paragraph in shape.text_frame.paragraphs])
+        return "\n".join([f"# {p.text}" for p in shape.text_frame.paragraphs])
 
     return "\n".join(
         [f"{create_bullet_point(p)}{p.text}" for p in shape.text_frame.paragraphs]
