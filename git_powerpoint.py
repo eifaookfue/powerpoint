@@ -1,23 +1,46 @@
+from typing import List
 from pptx import Presentation
+from pptx.shapes.autoshape import Shape
+from pptx.text.text import _Paragraph
+
 
 def extract_text_from_pptx(file_path):
     # プレゼンテーションを読み込む
     presentation = Presentation(file_path)
-    all_text = []
+    all_text: List[List[str]] = []
 
     # スライドごとにテキストを抽出
     for slide in presentation.slides:
-        for shape in slide.shapes:
-            if shape.has_text_frame:  # テキストフレームを持っている場合
-                for paragraph in shape.text_frame.paragraphs:
-                    all_text.append(paragraph.text)
+        texts = [extract_text_from_shape(shape) for shape in slide.shapes]
+        all_text.append(texts)
 
     return all_text
+
+
+def extract_text_from_shape(shape: Shape) -> str:
+    """Returns string"""
+    if not shape.has_text_frame:
+        return None
+    if shape.name == "PlaceHolder 1":
+        return "\n".join([paragraph.text for paragraph in shape.text_frame.paragraphs])
+
+    return "\n".join(
+        [f"{create_bullet_point(p)}{p.text}" for p in shape.text_frame.paragraphs]
+    )
+
+
+def create_bullet_point(paragraph: _Paragraph) -> str:
+    """Create a bullet point according to paragraph.level"""
+    return f"{'  ' * paragraph.level}- "
+
 
 # ファイルパスを指定してテキストを抽出
 pptx_file = "example.pptx"
 text_list = extract_text_from_pptx(pptx_file)
 
 # 抽出結果を表示
-for idx, text in enumerate(text_list):
-    print(f"Text {idx + 1}: {text}")
+for idx, texts in enumerate(text_list):
+    for text in texts:
+        print(text)
+    if idx < len(text_list) - 1:
+        print("---")
