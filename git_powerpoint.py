@@ -1,3 +1,4 @@
+import sys
 from typing import List
 from pptx import Presentation
 from pptx.shapes.autoshape import Shape
@@ -34,13 +35,13 @@ def create_bullet_point(paragraph: _Paragraph) -> str:
     return f"{'  ' * paragraph.level}- "
 
 
-# ファイルパスを指定してテキストを抽出
-pptx_file = "example.pptx"
-text_list = extract_text_from_pptx(pptx_file)
+if __name__ == "__main__":
+    args = sys.argv
+    pptx_file = args[1]
+    text_list = extract_text_from_pptx(pptx_file)
 
-# 抽出結果を表示
-for idx, texts in enumerate(text_list):
-    for text in texts:
-        print(text)
-    if idx < len(text_list) - 1:
-        print("---")
+    for idx, texts in enumerate(text_list):
+        for text in texts:
+            print(text)
+        if idx < len(text_list) - 1:
+            print("---")
