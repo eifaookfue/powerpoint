@@ -18,7 +18,7 @@ def extract_text_from_pptx(file_path):
 
 
 def extract_text_from_shape(shape: Shape) -> str:
-    """Returns string"""
+    """Extract text from shape"""
     if not shape.has_text_frame:
         return None
     if shape.name == "PlaceHolder 1":
