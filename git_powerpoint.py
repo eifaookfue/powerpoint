@@ -26,7 +26,11 @@ def extract_text_from_shape(shape: Shape) -> str:
         return "\n".join([f"# {p.text}" for p in shape.text_frame.paragraphs])
 
     return "\n".join(
-        [f"{create_bullet_point(p)}{p.text}" for p in shape.text_frame.paragraphs]
+        [
+            f"{create_bullet_point(p)}{p.text}"
+            for p in shape.text_frame.paragraphs
+            if p.text
+        ]
     )
 
 
