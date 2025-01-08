@@ -119,3 +119,27 @@ JavaとPythonは用途や設計思想が異なるプログラミング言語で�
 - **開発効率、データ分析**: Python。
 
 要件に応じて適切に使い分けるのが理想です。
+
+Here is the English translation of the table comparing Java and Python in terms of performance:
+
+---
+
+### **Performance Comparison: Java vs. Python**
+
+| **Aspect**               | **Java**                                                                                             | **Python**                                                                                           |
+|---------------------------|-----------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
+| **Execution Speed**       | - Faster due to JIT compilation, translating bytecode to native code for optimal performance.        | - Slower as it is an interpreted language, though PyPy (JIT-based Python) can improve speed.        |
+| **Memory Efficiency**     | - Efficient memory management with garbage collection.                                              | - Higher memory consumption due to flexible data structures.                                        |
+| **Parallelism**           | - Supports native threads and effective parallel processing for CPU-intensive tasks.                | - Limited by GIL for CPU-bound tasks; multiprocessing or asyncio can bypass this for certain tasks. |
+| **Startup Time**          | - JVM initialization causes a delay, taking several seconds.                                        | - Quick startup due to its interpreted nature, ideal for scripts and smaller tasks.                 |
+| **Development Speed**     | - Statically typed, ensuring type safety but resulting in verbose code.                             | - Dynamically typed, allowing concise and flexible code but increasing runtime error risks.          |
+| **Scalability**           | - Enterprise-ready frameworks like Spring make it suitable for large-scale, complex systems.        | - Requires additional tools (e.g., Gunicorn) for scalability, less efficient for large-scale tasks. |
+| **Use Cases**             | - Ideal for high-traffic systems, real-time processing, and large-scale applications.               | - Best for data analysis, AI/ML, prototyping, and small-to-medium applications.                     |
+| **Ecosystem**             | - Rich in enterprise-level frameworks (e.g., Spring, Hibernate).                                    | - Excellent libraries for data science and machine learning (e.g., NumPy, TensorFlow).              |
+| **Learning Curve**        | - Higher due to static typing and ecosystem complexity.                                             | - Lower due to its simplicity and dynamic nature.                                                   |
+
+---
+
+### **Summary**
+- **Java**: Suited for high-performance, scalable, and enterprise-level applications.  
+- **Python**: Excellent for rapid development, data science, and lightweight or experimental projects.
