@@ -21,3 +21,27 @@
 ---
 
 この表は、**パワーポイントのスライド1枚**に収まる簡潔な形式でまとめており、流量制御の観点で両者を直感的に比較できる内容になっています。
+
+Here is the English translation of the table:
+
+---
+
+### **Nginx vs. Solace: Flow Control Comparison**
+
+| **Aspect**        | **Nginx**                                                       | **Solace**                                                     |
+|--------------------|-----------------------------------------------------------------|-----------------------------------------------------------------|
+| **Primary Use**    | Web traffic management, reverse proxy, API gateway              | Messaging platform, event-driven architecture                  |
+| **Flow Control Methods** | Request rate limiting, connection limiting, bandwidth throttling  | Message throughput limiting, queue capacity limiting           |
+| **Scope**          | HTTP/HTTPS traffic                                              | Messaging traffic (Pub/Sub, queues)                            |
+| **Control Unit**   | Based on IP, paths, or users                                     | Based on topics, queues, or clients                            |
+| **Scalability**    | Optimized for high-traffic request handling                      | Optimized for distributed messaging and event processing        |
+| **Advanced Control** | Content-based routing, caching                                 | QoS (Quality of Service), message priority, dead-letter handling |
+| **Ease of Implementation** | Simple configuration and lightweight                     | Requires dedicated tools, suited for complex event processing   |
+| **Common Use Cases** | Web servers, API management                                    | IoT, microservices communication, real-time data processing     |
+
+--- 
+
+This captures the flow control comparison between Nginx and Solace in a clear and structured manner.
+
+- **Nginx**: Ideal for lightweight and simple solutions to manage HTTP traffic or as an API gateway.  
+- **Solace**: Best suited for high-performance messaging and real-time event-driven architectures.  
