@@ -79,8 +79,8 @@ volumes:
 - 3つのノードをクラスタとして設定します。
 - `docker exec` を使っていずれかのコンテナに入り、以下のコマンドを実行：
    ```bash
-   docker exec -it redis-node1 redis-cli --cluster create \
-   127.0.0.1:6379 127.0.0.1:6380 127.0.0.1:6381 \
+   docker exec -it poc_redis-node1_1 redis-cli --cluster create \
+   poc_redis-node1_1:6379 poc_redis-node2_1:6380 poc_redis-node3_1:6381 \
    --cluster-replicas 0
    ```
 
@@ -94,20 +94,20 @@ volumes:
 ### **5.1. クラスタステータスの確認**
 - クラスタに接続して状態を確認：
    ```bash
-   docker exec -it redis-node1 redis-cli -p 6379 cluster info
+   docker exec -it poc_redis-node1_1 redis-cli -p 6379 cluster info
    ```
 
 - ノード情報の確認：
    ```bash
-   docker exec -it redis-node1 redis-cli -p 6379 cluster nodes
+   docker exec -it poc_redis-node1_1 redis-cli -p 6379 cluster nodes
    ```
 
 ### **5.2. キーの分散確認**
 - 複数のキーを設定し、それぞれのノードにどのように割り当てられているかを確認します。
    ```bash
-   docker exec -it redis-node1 redis-cli -p 6379 set key1 value1
-   docker exec -it redis-node1 redis-cli -p 6379 set key2 value2
-   docker exec -it redis-node1 redis-cli -p 6379 get key1
+   docker exec -it poc_redis-node1_1 redis-cli -p 6379 set key1 value1
+   docker exec -it poc_redis-node1_1 redis-cli -p 6379 set key2 value2
+   docker exec -it poc_redis-node1_1 redis-cli -p 6379 get key1
    ```
 
 ---
