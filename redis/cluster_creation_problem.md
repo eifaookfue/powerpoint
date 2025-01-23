@@ -223,3 +223,9 @@ DNAT       tcp  --  0.0.0.0/0            0.0.0.0/0            tcp dpt:6381 to:17
 DNAT       tcp  --  0.0.0.0/0            0.0.0.0/0            tcp dpt:16380 to:172.25.0.4:16380
 DNAT       tcp  --  0.0.0.0/0            0.0.0.0/0            tcp dpt:6380 to:172.25.0.4:6380
 ```
+
+cluster-announce-ipについての説明は下記
+
+[Docs for redis-server command line options](https://stackoverflow.com/questions/55078246/docs-for-redis-server-command-line-options)
+
+[Redis configuration file example](https://redis.io/docs/latest/operate/oss_and_stack/management/config-file/)
