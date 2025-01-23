@@ -1,0 +1,33 @@
+version: '3.9'
+services:
+  redis-node1:
+    image: redis:7
+    command: ["redis-server", "--port", "6379", "--cluster-enabled", "yes", "--cluster-config-file", "nodes.conf", "--cluster-node-timeout", "5000", "--appendonly", "yes", "--cluster-announce-ip", "192.168.0.150", "--cluster-announce-port", "6379", "--cluster-announce-bus-port 16379"]
+    ports:
+      - "6379:6379"
+      - "16379:16379"
+    volumes:
+      - redis-node1-data:/data
+
+  redis-node2:
+    image: redis:7
+    command: ["redis-server", "--port", "6380", "--cluster-enabled", "yes", "--cluster-config-file", "nodes.conf", "--cluster-node-timeout", "5000", "--appendonly", "yes", "--cluster-announce-ip", "192.168.0.150", "--cluster-announce-port", "6380", "--cluster-announce-bus-port 16380"]
+    ports:
+      - "6380:6380"
+      - "16380:16380"
+    volumes:
+      - redis-node2-data:/data
+
+  redis-node3:
+    image: redis:7
+    command: ["redis-server", "--port", "6381", "--cluster-enabled", "yes", "--cluster-config-file", "nodes.conf", "--cluster-node-timeout", "5000", "--appendonly", "yes", "--cluster-announce-ip", "192.168.0.150", "--cluster-announce-port", "6381", "--cluster-announce-bus-port 16381"]
+    ports:
+      - "6381:6381"
+      - "16381:16381"
+    volumes:
+      - redis-node3-data:/data
+
+volumes:
+  redis-node1-data:
+  redis-node2-data:
+  redis-node3-data:
